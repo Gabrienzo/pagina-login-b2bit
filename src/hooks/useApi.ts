@@ -4,6 +4,31 @@ const api = axios.create({
     baseURL: 'https://api.homologation.cliqdrive.com.br',
 });
 
+api.interceptors.request.use(
+    config => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
+
+api.interceptors.response.use(
+    response => {
+        return response;
+    },
+    error => {
+        if (error.response && error.response.status === 401) {
+            console.log('Unauthorized, redirecting to login...');
+        }
+        return Promise.reject(error);
+    }
+);
+
 export const useApi = () => ({
     validateToken: async (token: string) => {
         const response = await api.get('/auth/profile/', {
@@ -25,7 +50,7 @@ export const useApi = () => ({
                 }
             }
         );
-        //tudo certo aqui ta mandando o token
+        //aqui ja consertei
         return response.data.tokens.access;
     },
     signout: async () => {
