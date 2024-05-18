@@ -1,5 +1,23 @@
 # React + TypeScript + Vite
 
+
+## Descrição:
+**(BR)** Pagina de login feita para o desafio da B2bit, utilizando contextAPI (API cfornecida por eles), react router e axios.\
+**(EN)** Login page made for the B2bit challenge, using contextAPI (API provided by them), react router and axios.
+
+## Instalation:
+**(BR)** Tutorial para iniciar o projeto:\
+**(EN)** Tutorial to start the project:
+```
+npm i
+npm run dev
+```
+Client:
+```
+"email": "cliente@youdrive.com",
+"password": "password"
+```
+# Vite default readme:
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
